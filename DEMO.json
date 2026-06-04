@@ -1,0 +1,31 @@
+{
+  "video_script": [
+    {"goto": "/", "wait_ms": 2500, "caption": "Landing page - rehab AI physio"},
+    {"click": "a:has-text('Get started')", "wait_ms": 1500},
+    {"click": "text=Senior balance", "wait_ms": 1000},
+    {"click": "text=Start routine", "wait_ms": 2000},
+    {"click": "text=Start webcam", "wait_ms": 2500, "caption": "Webcam and skeleton overlay"},
+    {"scroll": 400, "wait_ms": 1500},
+    {"click": "text=Next exercise", "wait_ms": 1200},
+    {"click": "text=Next exercise", "wait_ms": 1200},
+    {"click": "text=Finish session", "wait_ms": 2000},
+    {"goto": "/dashboard", "wait_ms": 2500, "caption": "Streak and progress chart"},
+    {"hover": ".rounded-lg.border", "wait_ms": 1500}
+  ],
+  "screenshot_shots": [
+    {"path": "/", "description": "Hero landing with architecture diagram", "wait_ms": 2500},
+    {"path": "/dashboard", "description": "Dashboard with seeded streak and chart", "wait_ms": 2000},
+    {"path": "/settings", "description": "Gemini API key settings panel", "wait_ms": 1500}
+  ],
+  "submission": {
+    "inspiration": "We watched family members come home with a one-page exercise sheet after knee surgery and drift within a week because nobody was there to check form or cheer them on. Research puts home physio nonadherence as high as 70 percent, so we wanted something that feels like a supportive clinician in the room, not another gym rep counter.",
+    "what_it_does": "Restora Coach is a browser-based AI physio for home rehab and senior balance. You pick a short 2 to 3 exercise routine, stand in front of your webcam, and get live safety-aware form feedback with joint-angle targets. After the set, a Gemini coach summarizes your session, updates your streak, and charts progress so patients and older adults stay consistent without installing an app.",
+    "how_we_built_it": "We used Next.js 14, Tailwind, and shadcn-style UI for a polished single-page flow. MediaPipe Pose Landmarker tracks 33 landmarks client-side with EMA smoothing and rep state machines per exercise. Gemini 2.5 Flash generates post-session coaching when judges add a free API key in Settings; otherwise we ship warm fallback copy. Streaks and history live in localStorage with seeded demo data on first load.",
+    "challenges": "Landmark jitter required jump rejection and angle debouncing so reps do not double-count. We also had to cache fallback coach text so a 429 from Gemini never blocks the demo finish screen.",
+    "accomplishments": "A full safety-first rehab angle with voice cues, adaptive difficulty levels, Docker deployment, and a 60-second judge path from goal pick to streak update.",
+    "what_we_learned": "Keeping routines to three movements and pairing positive feedback with visible streaks matches adherence research better than feature-heavy fitness apps.",
+    "whats_next": "Clinician dashboard to prescribe custom ROM targets, optional encrypted cloud sync, more exercises validated with PT advisors, offline PWA install, and multilingual voice packs.",
+    "built_with": ["next.js-14", "typescript", "tailwindcss", "mediapipe-tasks-vision", "google-gemini-api", "recharts", "radix-ui", "docker"],
+    "category_hint": "ML/AI + Social Good (Health and Fitness Technology)"
+  }
+}
